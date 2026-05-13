@@ -1,0 +1,27 @@
+<h1>Posts List</h1>
+
+@if (isLoading()) {
+  <p>Loading posts...</p>
+}
+
+@if (error()) {
+  <div class="error">
+    <p>{{ error() }}</p>
+
+    <button (click)="loadPosts()">
+      Retry
+    </button>
+  </div>
+}
+
+@if (!isLoading() && !error()) {
+  <div class="posts-container">
+    @for (post of posts(); track post.id) {
+      <div class="post-card">
+        <h3>{{ post.title }}</h3>
+
+        <p>{{ post.body }}</p>
+      </div>
+    }
+  </div>
+}
