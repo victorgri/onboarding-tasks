@@ -1,0 +1,48 @@
+<form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+    <h3>Personal Information</h3>
+  <div class="form-group">
+      <div>
+        <label for="name">Name</label>
+        <input id="name" type="text" formControlName="name" />
+        @if (name?.touched && name?.errors?.['required']) {
+          <p class="error">This field is required.</p>
+        }
+        @if (name?.touched && name?.errors?.['minlength']) {
+          <p class="error">Minimum 3 characters.</p>
+        }
+      </div>
+      <div>
+        <label for="age">Age</label>
+        <input id="age" type="number" formControlName="age" />
+        @if (age?.touched && age?.errors?.['required']) {
+          <p class="error">This field is required.</p>
+        }
+        @if (age?.touched && age?.errors?.['min']) {
+          <p class="error">Minimum age is 18.</p>
+        }
+      </div>
+  </div>
+
+  <div formGroupName="address">
+    <h3>Address</h3>
+
+    <div class="form-group">
+        <div>
+          <label for="city">City</label>
+          <input id="city" type="text" formControlName="city" />
+          @if (city?.touched && city?.errors?.['required']) {
+            <p class="error">This field is required.</p>
+          }
+        </div>
+        <div>
+          <label for="state">State</label>
+          <input id="state" type="text" formControlName="state" />
+          @if (state?.touched && state?.errors?.['required']) {
+            <p class="error">This field is required.</p>
+          }
+        </div>
+    </div>
+  </div>
+
+  <button type="submit">Submit</button>
+</form>

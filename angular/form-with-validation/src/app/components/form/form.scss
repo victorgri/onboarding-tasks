@@ -1,0 +1,11 @@
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.error {
+    color: red;
+    margin: 0;
+    max-height: 20px
+}
